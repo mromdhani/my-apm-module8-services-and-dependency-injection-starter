@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-apm-module6-filtering-with-custom-pipe';
+  pageTitle: string = `My Acme Product Management (Module 6 - Filtering with a Custom Pipe)`;
 }

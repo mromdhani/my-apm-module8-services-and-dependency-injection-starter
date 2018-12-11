@@ -1,0 +1,50 @@
+<div class="card mt-5">
+  <div class="card-header bg-info text-white">
+   <h5> {{pageTitle}}</h5>
+  </div>
+  <div class="card-body">
+    <div class='row'>
+      <div class='col-md-2'>
+        <h5>Filter by: </h5>
+      </div>
+      <div class='col-md-4'>
+        <input type='text' [(ngModel)]='listFilter' />
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <h5>Filtered by: {{listFilter}} </h5>
+      </div>
+    </div>
+    <div class="row">
+      <table *ngIf='products && products.length' class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary' (click)='toggleImage()'>
+                {{showImage ? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let product of products | productsFilter:listFilter'>
+            <td>
+              <img *ngIf='showImage' [src]='product.imageUrl' [title]='product.productName' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
+            </td>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.productCode | lowercase }}</td>
+            <td>{{ product.releaseDate }}</td>
+            <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td> <!--Fixed starting from v 5 -->
+            <td>{{ product.starRating }}</td>
+          </tr>
+        </tbody>
+      </table>
+ </div>
+  </div>
+</div>
