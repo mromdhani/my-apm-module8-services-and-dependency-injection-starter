@@ -1,4 +1,4 @@
-<div class="card mt-5">
+<div class="card mt-3">
   <div class="card-header bg-info text-white">
    <h5> {{pageTitle}}</h5>
   </div>
@@ -41,7 +41,12 @@
             <td>{{ product.productCode | lowercase }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency:'USD':'symbol':'1.2-2'}}</td> <!--Fixed starting from v 5 -->
-            <td>{{ product.starRating }}</td>
+            <td>
+              <app-star [rating]='product.starRating'
+               (ratingClicked)='onRatingClicked($event)'>
+              </app-star>
+
+            </td>
           </tr>
         </tbody>
       </table>
