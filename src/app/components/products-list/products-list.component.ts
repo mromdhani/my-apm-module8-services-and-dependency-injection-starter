@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../domain/iproduct';
 import { ProductsService } from 'src/app/services/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -21,8 +22,10 @@ export class ProductsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this._service.getAllProducts();
-    console.log('In OnInit');
+     this._service.getAllProducts().subscribe(
+        resultat => this.products = resultat,
+        erreur => console.log(` ATTENTION: Il ya eu l'erreur : ${erreur} lors de l'appel REST`)
+     );
   }
   toggleImage(): void {
     this.showImage = !this.showImage;
