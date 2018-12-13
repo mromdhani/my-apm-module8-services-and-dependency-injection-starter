@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {RouterModule, Route} from '@angular/router';
 
 import {HttpClientModule} from '@angular/common/http';
 
@@ -15,16 +14,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProductsDetailComponent } from './components/products-detail/products-detail.component';
-
-const routes: Route[] = [
-   { path: 'list',  component: ProductsListComponent},
-   { path: 'welcome',  component: WelcomeComponent},
-   { path: 'detail/:id',  component: ProductsDetailComponent},
-   { path: '',  redirectTo: 'welcome', pathMatch: 'full'},
-   { path: '**',  component: NotfoundComponent}
+import { RoutingModule } from './routing/routing.module';
 
 
-];
 
 @NgModule({
   declarations: [
@@ -43,7 +35,7 @@ const routes: Route[] = [
     NgbModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
